@@ -21,7 +21,7 @@ async function AulaUm() {
   const { sigla } = await prompts({
     type: 'text',
     name: 'sigla',
-    message: 'Qual é a sigal do estado desejado?',
+    message: 'Qual é a sigla do estado desejado?',
     validate: (sigla: string) => {
       return sigla.length !== 2 ? `A sigla deve ter 2 caracteres!` : true;
     },
