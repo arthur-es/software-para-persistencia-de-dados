@@ -1,32 +1,59 @@
-/**
- * Some predefined delay values (in milliseconds).
- */
-export enum Delays {
-  Short = 500,
-  Medium = 2000,
-  Long = 5000,
+const prompts = require('prompts');
+import * as fs from 'fs';
+import * as csv from 'csv-parser';
+
+async function processaArquivoCSV(caminhoArquivo: string) {
+  const resultados = [];
+
+  return new Promise((resolve, reject) => {
+    fs.createReadStream(caminhoArquivo)
+      .pipe(
+        csv({
+          mapHeaders: ({ header }) => header.toLowerCase(),
+        }),
+      )
+      .on('data', (data) => {
+        resultados.push(data);
+      })
+      .on('end', () => {
+        resolve(resultados);
+      })
+      .on('error', () => {
+        reject();
+      });
+  });
 }
 
-/**
- * Returns a Promise<string> that resolves after a given time.
- *
- * @param {string} name - A name.
- * @param {number=} [delay=Delays.Medium] - A number of milliseconds to delay resolution of the Promise.
- * @returns {Promise<string>}
- */
-function delayedHello(
-  name: string,
-  delay: number = Delays.Medium,
-): Promise<string> {
-  return new Promise((resolve: (value?: string) => void) =>
-    setTimeout(() => resolve(`Hello, ${name}`), delay),
+type EstadoData = {
+  codigo: string;
+  sigla: string;
+  estado: string;
+  regiao: string;
+};
+
+async function AulaUm() {
+  let todosEstados: Array<EstadoData> = [];
+
+  todosEstados = (await processaArquivoCSV(
+    './static/UF.csv',
+  )) as Array<EstadoData>;
+
+  const { sigla } = await prompts({
+    type: 'text',
+    name: 'sigla',
+    message: 'Qual é a sigal do estado desejado?',
+    validate: (sigla: string) => {
+      return sigla.length !== 2 ? `A sigla deve ter 2 caracteres!` : true;
+    },
+  });
+
+  const dadosEstadoEscolhido = todosEstados.find((estado) => {
+    return estado.sigla === sigla.toUpperCase();
+  });
+
+  console.log(
+    `Estado escolhido: ${dadosEstadoEscolhido.estado} (Região ${dadosEstadoEscolhido.regiao})`,
   );
 }
 
-// Below are examples of using ESLint errors suppression
-// Here it is suppressing a missing return type definition for the greeter function.
-
-// eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
-export async function greeter(name: string) {
-  return await delayedHello(name, Delays.Long);
-}
+AulaUm();
