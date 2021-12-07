@@ -2,9 +2,9 @@
 
 ## Como executar esse projeto?
 
-### Clone esse repositório
+### Clonar repositório
 
-To clone the repository, use the following commands:
+Para clonar esse repositório, use os seguintes comandos:
 
 ```sh
 git clone https://github.com/arthur-es/software-para-persistencia-de-dados
@@ -12,7 +12,7 @@ cd software-para-persistencia-de-dados
 npm install
 ```
 
-## Scripts disponíveis
+### Scripts disponíveis para trabalhar nesse projeto
 
 - `build` - compila de TS para JS,
 - `start` - roda o programa main.js,
