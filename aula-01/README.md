@@ -16,13 +16,15 @@ cd software-para-persistencia-de-dados
 cd aula-01
 npm install
 npm run build
-npm run start
+npm run start:a
+npm run start:b
 ```
 
 ### Scripts disponíveis para trabalhar nesse projeto
 
 - `build` - compila de TypeScript para JavaScript,
-- `start` - roda o programa main.js,
+- `start:a` - roda o programa a.js (ref. a questão A),
+- `start:b` - roda o programa b.js (ref. a questão B),
 - `build:watch` - compila de TS para JS sempre que há uma alteração em algum arquivo .ts,
 
 # Aula 01

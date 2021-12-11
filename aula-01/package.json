@@ -2,7 +2,8 @@
   "name": "arthur-castro",
   "version": "0.0.0",
   "scripts": {
-    "start": "node build/src/main.js",
+    "start:a": "node build/src/a.js",
+    "start:b": "node build/src/b.js",
     "clean": "rimraf coverage build tmp",
     "prebuild": "npm run lint",
     "build": "tsc -p tsconfig.release.json",
