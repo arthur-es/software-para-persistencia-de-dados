@@ -2,6 +2,10 @@
 
 ## DESAFIO DA AULA 01
 
+#### RESULTADO 01:
+
+![Demonstração 01](./gifs/demonstracao-aula-01.gif)
+
 ### Como executar esse projeto?
 
 Clone esse repositório, depois entre na pasta da aula-01 e execute os comandos de instalação das bibliotecas/dependência do projeto; build e start;
