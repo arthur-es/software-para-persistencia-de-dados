@@ -1,12 +1,11 @@
 {
     "cpf": "00644516151",
-    "nome": "Arthur",
+    "nome": "Arthur Castro",
     "cargo": "Diretor",
     "idade": 22,
-    "salario": 5000,
+    "salario": 4000,
     "habilidades": [
-        "test",
-        "tester2",
-        "programador"
+        "programador nodejs",
+        "programador react"
     ]
 }

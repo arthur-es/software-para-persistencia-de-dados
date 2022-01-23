@@ -8,6 +8,10 @@
 
 - [Código fonte e docs - AULA 02](./aula-02/README.md)
 
+## DESAFIO DA AULA 03
+
+- [Código fonte e docs - AULA 03](./aula-03/README.md)
+
 ## Stack de tecnologias utilizadas:
 
 - Typescript
