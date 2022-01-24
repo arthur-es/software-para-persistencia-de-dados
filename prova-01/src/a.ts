@@ -23,7 +23,7 @@ async function Prova01() {
 
   switch (opcao) {
     case 1:
-      pesquisaPorTexto();
+      opcaoPesquisaPorTexto();
       break;
 
     case 2:
@@ -39,12 +39,68 @@ async function Prova01() {
       break;
 
     default:
-      console.log('default');
+      console.log('Erro: caiu dentro do default do SWITCH CASE');
   }
 }
 
-async function pesquisaPorTexto() {
-  console.log(`Você escolheu pesquisaPorTexto`);
+async function opcaoPesquisaPorTexto() {
+  console.log(`Você escolheu pesquisar por texto!`);
+
+  const { campoDePesquisa } = await prompts({
+    type: 'text',
+    name: 'campoDePesquisa',
+    message: `Você gostaria de pesquisar por:\n1 - NOME\n2 - DISCIPLINA\n`,
+    validate: (value: number) => {
+      return value == 1 || value == 2 ? true : `Deve ser a opção 1 ou 2.`;
+    },
+  });
+
+  const { textoPesquisa } = await prompts({
+    type: 'text',
+    name: 'textoPesquisa',
+    message: `Entre com o texto para pesquisar: `,
+    validate: (value: string) => {
+      return value.length >= 0 && value.length <= 256
+        ? true
+        : `Deve ter no mínimo 1 caracter e no máximo 256.`;
+    },
+  });
+
+  pesquisaPorTexto(campoDePesquisa, textoPesquisa);
+}
+
+async function pesquisaPorTexto(campo: number, texto: string) {
+  const cursos = pegaTodosOsCursos();
+
+  if (campo == 1) {
+    console.log(
+      `Pesquisando nos cursos todos que incluem no campo NOME o texto: ${texto}`,
+    );
+
+    const todosCursosEncontrados = cursos.filter((curso: any) => {
+      return curso.nome.toLowerCase().includes(texto.toLocaleLowerCase());
+    });
+
+    if (todosCursosEncontrados.length === 0) {
+      console.log('Nenhum curso encontrado!');
+    } else {
+      console.log('Cursos encontrados: ', todosCursosEncontrados);
+    }
+  } else if (campo == 2) {
+    console.log(
+      `Pesquisando nos cursos todos que incluem no campo DISCIPLINA o texto: ${texto}`,
+    );
+
+    const todosCursosEncontrados = cursos.filter((curso: any) => {
+      return curso.disciplina.toLowerCase().includes(texto.toLocaleLowerCase());
+    });
+
+    if (todosCursosEncontrados.length === 0) {
+      console.log('Nenhum curso encontrado!');
+    } else {
+      console.log('Cursos encontrados: ', todosCursosEncontrados);
+    }
+  }
 }
 
 async function pesquisaPorNumeroETexto() {
