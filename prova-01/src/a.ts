@@ -105,6 +105,9 @@ async function pesquisaPorTexto(campo: number, texto: string) {
 
 async function pesquisaPorNumeroETexto() {
   console.log(`Você escolheu pesquisaPorNumeroETexto`);
+  console.log(
+    'Não entendi o enunciado: Na pesquisa por número e texto, você deve escolher se vai usar as opções de maior ou menor, também é fixo e a cargo do aluno. O texto, segue o item anterior.',
+  );
 }
 
 async function listarTodosOsCursos() {
