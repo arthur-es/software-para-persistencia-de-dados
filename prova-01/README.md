@@ -24,16 +24,14 @@ Clone esse repositório, depois entre na pasta da aula-02 e execute os comandos 
 ```sh
 git clone https://github.com/arthur-es/software-para-persistencia-de-dados
 cd software-para-persistencia-de-dados
-cd aula-03
+cd prova-01
 npm install
 npm run build
 npm run start:a
-npm run start:b
 ```
 
 ### Scripts disponíveis para trabalhar nesse projeto
 
 - `build` - compila de TypeScript para JavaScript,
 - `start:a` - roda o programa a.js (ref. a PARTE B 1),
-- `start:b` - roda o programa b.js (ref. a PARTE B 2),
 - `build:watch` - compila de TS para JS sempre que há uma alteração em algum arquivo .ts,
