@@ -128,7 +128,7 @@ function pegaTodosOsCursos() {
   const arquivoRaw: any = parseXml(dados);
   const cursosRaw = arquivoRaw.universidade.curso;
 
-  let cursos = cursosRaw.map((curso) => {
+  const cursos = cursosRaw.map((curso: any) => {
     const novoCurso = {
       ano: Number(curso.ano._text),
       ch: Number(curso.ch._text),

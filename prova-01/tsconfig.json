@@ -14,16 +14,13 @@
     "noImplicitReturns": true,
     "noUnusedLocals": true,
     "noUnusedParameters": true,
-    "noImplicitAny": false,
+    "noImplicitAny": true,
     "noImplicitThis": false,
     "strictNullChecks": false,
     "baseUrl": ".",
     "paths": {
-      "tslib" : ["path/to/node_modules/tslib/tslib.d.ts"]
+      "tslib": ["path/to/node_modules/tslib/tslib.d.ts"]
     }
   },
-  "include": [
-    "src/**/*",
-    "__tests__/**/*"
-  ],
+  "include": ["src/**/*", "__tests__/**/*"]
 }
